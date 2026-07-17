@@ -1,2 +1,26 @@
-# shifttech
-AI-powered knowledge base and website for ShiftTech transmission specialists
+# ShiftTech
+
+Перша робоча версія сайту ShiftTech 2.0: Next.js App Router, TypeScript і Tailwind CSS.
+
+## Локальний запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Відкрити: <http://localhost:3000>
+
+## Перевірка production build
+
+```bash
+npm run build
+npm run start
+```
+
+## Архітектурні принципи
+
+- клієнт заходить через автомобіль;
+- система знань думає через коробку передач;
+- сторінки структуровані як сутності для майбутніх авто, симптомів, помилок, кейсів та AI Search;
+- технічні факти, ціни, адреси й гарантійні умови додаються лише після підтвердження в джерелах.
