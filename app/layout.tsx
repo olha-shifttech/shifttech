@@ -1,5 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header, Footer } from "@/components/ui";
-export const metadata: Metadata = { title: "ShiftTech — ремонт АКПП, DSG та CVT", description: "Перша технічна версія AI-friendly платформи ShiftTech для трансмісій." };
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="uk"><body><Header/><main>{children}</main><Footer/></body></html>}
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://shifttech.vercel.app"),
+  title: { default: "ShiftTech — ремонт АКПП, DSG та CVT", template: "%s | ShiftTech" },
+  description: "AI-friendly платформа ShiftTech для діагностики та ремонту АКПП, DSG, CVT і автоматичних коробок передач.",
+  openGraph: { title: "ShiftTech", description: "Преміальна knowledge platform для ремонту трансмісій.", type: "website", locale: "uk_UA" },
+};
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#111315" };
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="uk"><body><Header /><main>{children}</main><Footer /></body></html>;
+}
