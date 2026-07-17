@@ -1,1 +1,19 @@
-import { Card, Hero, Section } from "@/components/ui";import { vehicles } from "@/lib/data";export default function Cars(){return <><Hero title="Автомобілі" subtitle="UX-вхід для клієнта: марка, модель, покоління, двигун і ринок допомагають перейти до можливої коробки."/><Section eyebrow="vehicle pages" title="Priority A структура"><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{vehicles.map(v=><Card key={v.name} title={v.name}><p>Статус: каркас готовий до наповнення.</p></Card>)}</div></Section></>}
+import type { Metadata } from "next";
+import { CatalogSearch } from "@/components/catalog-search";
+import { Hero, Section } from "@/components/ui";
+
+export const metadata: Metadata = {
+  title: "Каталог автомобілів ShiftTech — пошук по авто і коробці",
+  description: "Каталог автомобілів ShiftTech з пошуком за маркою, моделлю, двигуном і коробкою передач.",
+};
+
+export default function Cars() {
+  return (
+    <>
+      <Hero title="Каталог автомобілів" subtitle="Клієнт починає з автомобіля: марка, модель, двигун або ринок допомагають перейти до можливої коробки передач і безпечної діагностики." />
+      <Section eyebrow="vehicle-first UX" title="Пошук за маркою, моделлю або коробкою передач">
+        <CatalogSearch />
+      </Section>
+    </>
+  );
+}

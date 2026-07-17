@@ -1,1 +1,23 @@
-import { notFound } from "next/navigation";import { Card, Hero, Section } from "@/components/ui";import { symptoms, transmissions } from "@/lib/data";export function generateStaticParams(){return transmissions.map(t=>({slug:t.id}))}export default async function TransmissionPage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const item=transmissions.find(t=>t.id===slug);if(!item)notFound();return <><Hero title={`${item.name} — сторінка коробки передач`} subtitle={`${item.alt}. Це шаблон Transmission Page для майбутнього повного технічного наповнення без непідтверджених фактів.`}/><Section eyebrow="template" title="Структура сторінки коробки"><div className="grid gap-5 md:grid-cols-2"><Card title="Основні дані"><p>Назва: {item.name}</p><p>Альтернативна назва: {item.alt}</p><p>Тип: {item.type}</p></Card><Card title="Пов'язані симптоми"><ul className="space-y-2">{symptoms.slice(0,6).map(s=><li key={s}>{s}</li>)}</ul></Card><Card title="Що потрібно додати"><p>Автомобілі, двигуни, типові помилки, слабкі місця, деталі, кейси та джерела знань після перевірки.</p></Card><Card title="Наступна дія"><p>Якщо є симптоми роботи коробки, потрібна діагностика перед висновком про ремонт.</p></Card></div></Section></>}
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { Card, Hero, Pill, Section } from "@/components/ui";
+import { symptoms, transmissions, vehicles, vehicleName } from "@/lib/data";
+
+export function generateStaticParams() { return transmissions.map((item) => ({ slug: item.id })); }
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const item = transmissions.find((transmission) => transmission.id === slug);
+  if (!item) return {};
+  return { title: `${item.name} ${item.alt} — сторінка коробки передач ShiftTech`, description: `${item.name}: тип, виробник, пов'язані авто, симптоми та наступний крок діагностики.` };
+}
+
+export default async function TransmissionPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = transmissions.find((transmission) => transmission.id === slug);
+  if (!item) notFound();
+  const relatedVehicles = vehicles.filter((vehicle) => item.relatedVehicleSlugs.includes(vehicle.slug));
+
+  return <><Hero title={`${item.name} — сторінка коробки передач`} subtitle={`${item.alt}. ${item.summary}`} /><Section eyebrow="transmission entity" title="Основні дані коробки"><div className="grid gap-5 md:grid-cols-2"><Card title="Ідентифікація"><div className="space-y-3"><p>Назва: <b className="text-white">{item.name}</b></p><p>Альтернативна назва: {item.alt}</p><p>Виробник: {item.manufacturer}</p><div className="flex gap-2"><Pill>{item.type}</Pill><Pill>Priority {item.priority}</Pill></div></div></Card><Card title="Пов'язані автомобілі">{relatedVehicles.length ? <ul className="space-y-2">{relatedVehicles.map((vehicle) => <li key={vehicle.slug}><Link className="text-shift" href={`/cars/${vehicle.slug}`}>{vehicleName(vehicle)}</Link></li>)}</ul> : <p>Зв'язки з авто будуть додані після перевірки джерел.</p>}</Card></div></Section><Section eyebrow="safe diagnostics" title="Симптоми, які потребують перевірки"><div className="grid gap-5 md:grid-cols-3">{symptoms.slice(0, 6).map((symptom) => <Card key={symptom} title={symptom}><p>Може бути пов'язано з {item.name}, але остаточна причина визначається тільки після діагностики.</p></Card>)}</div></Section></>;
+}
