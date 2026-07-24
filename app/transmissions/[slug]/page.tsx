@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Card, Hero, Pill, Section } from "@/components/ui";
 import { symptoms, transmissions, vehicles, vehicleName } from "@/lib/data";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() { return transmissions.map((item) => ({ slug: item.id })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Card, Hero, Section } from "@/components/ui";
 import { symptoms, transmissions, vehicles } from "@/lib/data";
+import { articles, causes, diagnosticProcedures, repairSolutions } from "@/lib/knowledge";
 
 export const metadata: Metadata = {
   title: "База знань",
@@ -24,6 +25,14 @@ export default function KnowledgeBasePage() {
               <p className="mb-4 text-4xl font-black text-shift">{item.count}</p><p>{item.text}</p>
             </Card>
           ))}
+        </div>
+      </Section>
+      <Section eyebrow="knowledge engine" title="Один зв’язаний діагностичний маршрут">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Card title="Можливі причини"><p className="mb-3 text-4xl font-black text-shift">{causes.length}</p><p>Повторно використовуються для різних симптомів.</p></Card>
+          <Card title="Процедури"><p className="mb-3 text-4xl font-black text-shift">{diagnosticProcedures.length}</p><p>Послідовності перевірок без передчасного діагнозу.</p></Card>
+          <Card title="Рішення"><p className="mb-3 text-4xl font-black text-shift">{repairSolutions.length}</p><p>Застосовуються лише після підтвердження причини.</p></Card>
+          <Card title="Статті"><p className="mb-3 text-4xl font-black text-shift">{articles.length}</p><p>Пов’язані матеріали, згенеровані як статичні сторінки.</p></Card>
         </div>
       </Section>
       <Section eyebrow="наступні сутності" title="Готується до наповнення">
