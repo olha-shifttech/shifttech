@@ -1,5 +1,6 @@
 export type TransmissionType = "АКПП" | "CVT" | "DSG";
 export type EntityStatus = "draft" | "ready-for-content";
+export const requiresVerification = "Потребує перевірки";
 
 export const navigation = [
   { href: "/services", label: "Послуги" },
@@ -46,6 +47,7 @@ export const transmissions = [
     summary:
       "Пріоритетна автоматична коробка ShiftTech для Volkswagen / Audi / Skoda / Seat та частини авто ринку USA.",
     relatedVehicleSlugs: ["volkswagen-passat-b7-2-5-usa", "volkswagen-jetta-2-5-usa", "volkswagen-beetle-2-5-usa"],
+    family: "Aisin 09G / 09M / 09K",
   },
   {
     id: "09m",
@@ -56,6 +58,7 @@ export const transmissions = [
     priority: "A",
     summary: "Частина ядра Aisin 09G / 09M / 09K для майбутніх сторінок авто, симптомів, помилок і кейсів.",
     relatedVehicleSlugs: ["volkswagen-tiguan-2-0"],
+    family: "Aisin 09G / 09M / 09K",
   },
   {
     id: "09k",
@@ -66,6 +69,7 @@ export const transmissions = [
     priority: "A",
     summary: "Сутність сімейства Aisin для масштабованої бази знань без дублювання фактів.",
     relatedVehicleSlugs: [],
+    family: "Aisin 09G / 09M / 09K",
   },
   {
     id: "jf010e",
@@ -130,16 +134,16 @@ export const transmissions = [
 ];
 
 export const vehicles = [
-  { slug: "volkswagen-passat-b7-2-5-usa", brand: "Volkswagen", model: "Passat", generation: "B7", engine: "2.5", market: "USA", transmissionIds: ["09g"] },
-  { slug: "volkswagen-jetta-2-5-usa", brand: "Volkswagen", model: "Jetta", generation: "", engine: "2.5", market: "USA", transmissionIds: ["09g"] },
-  { slug: "volkswagen-beetle-2-5-usa", brand: "Volkswagen", model: "Beetle", generation: "", engine: "2.5", market: "USA", transmissionIds: ["09g"] },
-  { slug: "volkswagen-tiguan-2-0", brand: "Volkswagen", model: "Tiguan", generation: "", engine: "2.0", market: "", transmissionIds: ["09m"] },
-  { slug: "nissan-qashqai", brand: "Nissan", model: "Qashqai", generation: "", engine: "", market: "", transmissionIds: ["jf011e", "jf016e"] },
-  { slug: "nissan-x-trail", brand: "Nissan", model: "X-Trail", generation: "", engine: "", market: "", transmissionIds: ["jf011e", "jf016e"] },
-  { slug: "nissan-teana", brand: "Nissan", model: "Teana", generation: "", engine: "", market: "", transmissionIds: ["jf017e"] },
-  { slug: "nissan-murano", brand: "Nissan", model: "Murano", generation: "", engine: "", market: "", transmissionIds: ["jf010e", "jf017e"] },
-  { slug: "renault-koleos", brand: "Renault", model: "Koleos", generation: "", engine: "", market: "", transmissionIds: ["jf011e"] },
-  { slug: "mitsubishi-outlander", brand: "Mitsubishi", model: "Outlander", generation: "", engine: "", market: "", transmissionIds: ["jf011e"] },
+  { slug: "volkswagen-passat-b7-2-5-usa", brand: "Volkswagen", model: "Passat", generation: "B7", engine: "2.5", market: "USA", productionYears: null, transmissionIds: ["09g"] },
+  { slug: "volkswagen-jetta-2-5-usa", brand: "Volkswagen", model: "Jetta", generation: "", engine: "2.5", market: "USA", productionYears: null, transmissionIds: ["09g"] },
+  { slug: "volkswagen-beetle-2-5-usa", brand: "Volkswagen", model: "Beetle", generation: "", engine: "2.5", market: "USA", productionYears: null, transmissionIds: ["09g"] },
+  { slug: "volkswagen-tiguan-2-0", brand: "Volkswagen", model: "Tiguan", generation: "", engine: "2.0", market: "", productionYears: null, transmissionIds: ["09m"] },
+  { slug: "nissan-qashqai", brand: "Nissan", model: "Qashqai", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf011e", "jf016e"] },
+  { slug: "nissan-x-trail", brand: "Nissan", model: "X-Trail", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf011e", "jf016e"] },
+  { slug: "nissan-teana", brand: "Nissan", model: "Teana", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf017e"] },
+  { slug: "nissan-murano", brand: "Nissan", model: "Murano", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf010e", "jf017e"] },
+  { slug: "renault-koleos", brand: "Renault", model: "Koleos", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf011e"] },
+  { slug: "mitsubishi-outlander", brand: "Mitsubishi", model: "Outlander", generation: "", engine: "", market: "", productionYears: null, transmissionIds: ["jf011e"] },
 ].map((vehicle) => ({ ...vehicle, status: "ready-for-content" as EntityStatus }));
 
 export const serviceCards = [
