@@ -8,20 +8,31 @@ export const navigation = [
   { href: "/cvt", label: "CVT" },
   { href: "/cars", label: "Автомобілі" },
   { href: "/transmissions", label: "Коробки" },
+  { href: "/knowledge-base", label: "База знань" },
   { href: "/contacts", label: "Контакти" },
 ];
 
-export const symptoms = [
-  "Ривки при перемиканні",
-  "Ривки при розгоні",
-  "Пробуксовка",
-  "Не їде вперед",
-  "Не їде назад",
-  "Їде тільки після прогріву",
-  "Вібрація",
-  "Гул",
-  "Аварійний режим",
-  "Удар при вмиканні D або R",
+export type Symptom = {
+  slug: string;
+  name: string;
+  summary: string;
+  observations: string[];
+  transmissionIds: string[];
+  status: EntityStatus;
+  needsVerification: boolean;
+};
+
+export const symptoms: Symptom[] = [
+  { slug: "ryvky-pry-peremykanni", name: "Ривки при перемиканні", summary: "Відчутний поштовх або нерівномірна зміна передач — привід зафіксувати умови прояву та пройти діагностику.", observations: ["На холодній чи прогрітій трансмісії", "Під час яких перемикань", "За якого навантаження"], transmissionIds: ["09g", "09m", "09k", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "ryvky-pry-rozhoni", name: "Ривки при розгоні", summary: "Ривки під час набору швидкості потрібно відрізнити від проблем двигуна, ходової частини та керування трансмісією.", observations: ["Швидкість і оберти", "Плавний чи різкий розгін", "Індикатори на панелі"], transmissionIds: ["jf010e", "jf011e", "jf015e", "jf016e", "jf017e"], status: "ready-for-content", needsVerification: true },
+  { slug: "probuksovka", name: "Пробуксовка", summary: "Зростання обертів без очікуваного прискорення потребує перевірки, а не висновку за одним симптомом.", observations: ["Передача або діапазон швидкості", "Температура трансмісії", "Як швидко зростають оберти"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e"], status: "ready-for-content", needsVerification: true },
+  { slug: "ne-yide-vpered", name: "Не їде вперед", summary: "Відсутність руху в режимі D є критичним сигналом: подальші спроби руху краще припинити до перевірки.", observations: ["Чи вмикається індикація D", "Чи є сторонні звуки", "Чи рухається авто в режимі R"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "ne-yide-nazad", name: "Не їде назад", summary: "Відсутність руху в режимі R потребує безпечної зупинки та професійної перевірки.", observations: ["Чи вмикається індикація R", "Чи є затримка або удар", "Чи рухається авто вперед"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "yide-pislia-prohrivu", name: "Їде тільки після прогріву", summary: "Залежність поведінки від температури — важлива умова прояву, яку потрібно повідомити під час діагностики.", observations: ["Температура повітря", "Час до появи руху", "Поведінка після повного прогріву"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e"], status: "ready-for-content", needsVerification: true },
+  { slug: "vibratsiia", name: "Вібрація", summary: "Вібрація може мати різні джерела, тому спочатку потрібно описати режим руху й локалізувати прояв.", observations: ["На місці чи в русі", "Швидкість і навантаження", "Чи змінюється в повороті"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "hul", name: "Гул", summary: "Гул не варто автоматично пов’язувати з коробкою: важливі швидкість, навантаження та місце виникнення звуку.", observations: ["Швидкість появи", "Розгін або рух накатом", "Звідки чути звук"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "avariinyi-rezhym", name: "Аварійний режим", summary: "Обмежений режим роботи та попередження на панелі потребують зчитування кодів і перевірки умов їх появи.", observations: ["Текст або індикатор помилки", "Поведінка після перезапуску", "Коли режим активувався"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
+  { slug: "udar-pry-vmykanni-d-abo-r", name: "Удар при вмиканні D або R", summary: "Поштовх під час вибору режиму варто оцінювати разом із затримкою вмикання, температурою та іншими проявами.", observations: ["Режим D, R або обидва", "Затримка перед поштовхом", "Холодна чи прогріта трансмісія"], transmissionIds: ["09g", "09m", "09k", "jf010e", "jf011e", "jf015e", "jf016e", "jf017e", "dsg"], status: "ready-for-content", needsVerification: true },
 ];
 
 export const transmissions = [
