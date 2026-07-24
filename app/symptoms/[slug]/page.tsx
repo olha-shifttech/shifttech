@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${symptom.name} — що перевірити`,
     description: `${symptom.name}: що зафіксувати перед діагностикою та які типи трансмісій можуть бути пов’язані з проявом.`,
+    alternates: { canonical: `/symptoms/${symptom.slug}` },
   };
 }
 
