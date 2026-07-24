@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, Hero, Pill, Section } from "@/components/ui";
 import { symptoms, transmissions } from "@/lib/data";
+import { KnowledgeFlow } from "@/components/knowledge-flow";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return symptoms.map((symptom) => ({ slug: symptom.slug }));
@@ -49,6 +52,7 @@ export default async function SymptomPage({ params }: { params: Promise<{ slug: 
           <Link className="mt-4 inline-block font-bold text-shift" href="/diagnostics">Як проходить діагностика →</Link>
         </div>
       </Section>
+      <KnowledgeFlow symptomId={symptom.slug} />
     </>
   );
 }

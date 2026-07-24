@@ -5,6 +5,7 @@ import { Card, Hero, Pill, Section } from "@/components/ui";
 import { getTransmission, requiresVerification, symptoms, vehicles, vehicleName } from "@/lib/data";
 
 const baseUrl = "https://shifttech.vercel.app";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return vehicles.map((vehicle) => ({ slug: vehicle.slug }));
