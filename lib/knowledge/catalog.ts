@@ -1,3 +1,5 @@
+import { repairCaseGraph, repairCases } from "@/lib/repair-cases";
+
 export const entityKinds = [
   "vehicle-brands", "vehicle-models", "transmission-families", "transmissions", "symptoms", "causes",
   "diagnostic-procedures", "repair-procedures", "maintenance", "faq", "repair-cases", "articles",
@@ -40,6 +42,8 @@ const transmissionSeeds = [
 const families = transmissionSeeds.map(([slug, name, aliases]) => entity("transmission-families", slug, name, "Placeholder hub for identification, applications, symptoms, diagnostics, repairs, and maintenance.", [...aliases]));
 const transmissionModels = transmissionSeeds.flatMap(([familySlug, familyName, aliases]) => aliases.slice(0, familySlug === "aisin-09g-09m-09k" ? 3 : 1).map((code) => entity("transmissions", code.toLowerCase(), `${familyName.split(" ")[0]} ${code}`, "Placeholder transmission model page; technical specifications require editorial verification.", [code])));
 
+const registeredRepairCases = repairCases.map(repairCaseGraph);
+
 export const knowledgeEntities: KnowledgeEntity[] = [
   ...["Volkswagen", "Audi", "Škoda", "SEAT", "Nissan", "Renault", "Mitsubishi", "Toyota"].map((name) => entity("vehicle-brands", name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), name, "Placeholder brand hub for supported models and transmissions.")),
   ...[
@@ -67,9 +71,7 @@ export const knowledgeEntities: KnowledgeEntity[] = [
   ...[
     ["how-identify-transmission", "How do I identify my transmission?"], ["can-i-drive-with-symptom", "Can I keep driving with a transmission symptom?"], ["is-code-a-diagnosis", "Is a fault code a diagnosis?"],
   ].map(([slug, name]) => entity("faq", slug, name, "Placeholder FAQ answer awaiting technical and editorial review.")),
-  ...[
-    ["09g-harsh-shift-case", "09G harsh-shift repair case"], ["jf011e-shudder-case", "JF011E shudder repair case"], ["dq200-warning-mode-case", "DQ200 warning-mode repair case"],
-  ].map(([slug, name]) => entity("repair-cases", slug, name, "Placeholder ShiftTech case record; vehicle data, measurements, work, and outcome are not yet published.")),
+  ...registeredRepairCases.map(({ entity }) => entity),
   ...[
     ["transmission-identification-guide", "Transmission identification guide"], ["symptom-versus-diagnosis", "Symptom versus diagnosis"], ["pre-diagnostic-checklist", "Pre-diagnostic checklist"],
   ].map(([slug, name]) => entity("articles", slug, name, "Placeholder related article awaiting sourced editorial content.")),
@@ -91,10 +93,7 @@ export const knowledgeEdges: KnowledgeEdge[] = [
   { from: id("faq", "how-identify-transmission"), to: id("diagnostic-procedures", "vehicle-transmission-identification"), relation: "answers" },
   { from: id("faq", "can-i-drive-with-symptom"), to: id("symptoms", "warning-mode"), relation: "answers" },
   { from: id("faq", "is-code-a-diagnosis"), to: id("diagnostic-procedures", "scan-and-freeze-frame"), relation: "answers" },
-  ...[["09g-harsh-shift-case", "09g"], ["jf011e-shudder-case", "jf011e"], ["dq200-warning-mode-case", "dq200"]].flatMap(([caseSlug, transmission]) => [
-    { from: id("repair-cases", caseSlug), to: id("transmissions", transmission), relation: "documented-in" as const },
-    { from: id("repair-cases", caseSlug), to: id("repair-procedures", caseSlug.includes("09g") ? "valve-body-repair" : caseSlug.includes("dq200") ? "control-system-repair" : "transmission-overhaul"), relation: "documented-in" as const },
-  ]),
+  ...registeredRepairCases.flatMap(({ edges }) => edges),
   { from: id("articles", "transmission-identification-guide"), to: id("diagnostic-procedures", "vehicle-transmission-identification"), relation: "related-to" },
   { from: id("articles", "symptom-versus-diagnosis"), to: id("symptoms", "harsh-shifting"), relation: "related-to" },
   { from: id("articles", "pre-diagnostic-checklist"), to: id("diagnostic-procedures", "scan-and-freeze-frame"), relation: "related-to" },
