@@ -8,7 +8,7 @@ export const navigation = [
   { href: "/akpp", label: "АКПП" },
   { href: "/dsg", label: "DSG" },
   { href: "/cvt", label: "CVT" },
-  { href: "/cars", label: "Автомобілі" },
+  { href: "/vehicle-brands", label: "Автомобілі" },
   { href: "/transmissions", label: "Коробки" },
   { href: "/knowledge-base", label: "База знань" },
   { href: "/contacts", label: "Контакти" },
