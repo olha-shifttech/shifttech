@@ -5,7 +5,7 @@ import { getSymptomKnowledge } from "@/lib/knowledge";
 export function KnowledgeFlow({ symptomId }: { symptomId: string }) {
   const graph = getSymptomKnowledge(symptomId);
   return (
-    <Section eyebrow="knowledge engine" title="Від можливої причини до рішення">
+    <Section eyebrow="База знань" title="Від можливої причини до рішення">
       <p className="max-w-3xl leading-7 text-zinc-400">Кожен блок є окремою повторно використовуваною сутністю. Зв’язок показує діагностичний маршрут, а не автоматичний висновок.</p>
       <FlowGroup number="01" title="Можливі причини">
         {graph.causes.map((item) => <Card key={item.id} title={item.name}><p>{item.summary}</p><Pill>Потребує підтвердження</Pill></Card>)}

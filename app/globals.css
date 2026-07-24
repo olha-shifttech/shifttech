@@ -4,7 +4,24 @@
 
 :root { color-scheme: dark; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: #111315; color: white; }
+html { scroll-behavior: smooth; background: #0b0e0d; }
+body { margin: 0; background: #101311; color: #f5f7f5; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+main { min-height: 70vh; }
 a { text-underline-offset: 4px; }
-::selection { background: #35d06f; color: #111315; }
+::selection { background: #35d06f; color: #071009; }
+.eyebrow { margin-bottom: 1rem; color: #35d06f; font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.hero-grid { background-color: #101311; background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size: 64px 64px; }
+.hero-glow { position:absolute; width:46rem; height:46rem; right:-12rem; top:-20rem; border-radius:50%; background:rgba(53,208,111,.12); filter:blur(110px); pointer-events:none; }
+.button-primary,.button-secondary { display:inline-flex; min-height:3.25rem; align-items:center; justify-content:center; border-radius:.65rem; padding:.8rem 1.5rem; font-size:.9rem; font-weight:800; transition:.2s ease; }
+.button-primary { background:#35d06f; color:#071009; box-shadow:0 12px 40px rgba(53,208,111,.12); }
+.button-primary:hover { background:#55e48a; transform:translateY(-2px); }
+.button-secondary { border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.025); color:white; }
+.button-secondary:hover { border-color:rgba(53,208,111,.5); color:#35d06f; }
+.search-shell { overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:1.25rem; background:#151918; box-shadow:0 35px 90px rgba(0,0,0,.28); }
+.search-tab { border-radius:.6rem; padding:.7rem 1rem; color:#8f9792; font-size:.85rem; font-weight:700; transition:.2s; }
+.search-tab:hover { color:white; background:rgba(255,255,255,.04); }
+.search-tab-active { color:#071009!important; background:#35d06f!important; }
+.process-step { position:relative; border-top:1px solid rgba(255,255,255,.12); padding-top:1.75rem; }
+.process-step span { color:#35d06f; font-size:.75rem; font-weight:800; letter-spacing:.15em; }
+.process-step h3 { margin-top:1rem; font-size:1.25rem; font-weight:800; }
+.process-step p { margin-top:.75rem; color:#929a95; line-height:1.75; }

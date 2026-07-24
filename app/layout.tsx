@@ -5,8 +5,8 @@ import { Header, Footer } from "@/components/ui";
 export const metadata: Metadata = {
   metadataBase: new URL("https://shifttech.vercel.app"),
   title: { default: "ShiftTech — ремонт АКПП, DSG та CVT", template: "%s | ShiftTech" },
-  description: "AI-friendly платформа ShiftTech для діагностики та ремонту АКПП, DSG, CVT і автоматичних коробок передач.",
-  openGraph: { title: "ShiftTech", description: "Преміальна knowledge platform для ремонту трансмісій.", type: "website", locale: "uk_UA" },
+  description: "Професійна діагностика та ремонт АКПП, DSG, CVT і автоматичних коробок передач.",
+  openGraph: { title: "ShiftTech", description: "Професійний сервіс ремонту трансмісій.", type: "website", locale: "uk_UA" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#111315" };

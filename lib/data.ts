@@ -5,12 +5,10 @@ export const requiresVerification = "Потребує перевірки";
 
 export const navigation = [
   { href: "/services", label: "Послуги" },
-  { href: "/akpp", label: "АКПП" },
-  { href: "/dsg", label: "DSG" },
-  { href: "/cvt", label: "CVT" },
-  { href: "/vehicle-brands", label: "Автомобілі" },
-  { href: "/transmissions", label: "Коробки" },
+  { href: "/cars", label: "Автомобілі" },
+  { href: "/transmissions", label: "Коробки передач" },
   { href: "/knowledge-base", label: "База знань" },
+  { href: "/repair-cases", label: "Кейси ремонту" },
   { href: "/contacts", label: "Контакти" },
 ];
 
