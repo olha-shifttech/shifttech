@@ -61,6 +61,7 @@ export default function Home() {
         <div className="process-step"><span>02</span><h3>Дефектовка й погодження</h3><p>Показуємо, що знайшли. Обсяг робіт і вартість погоджуємо з вами до початку ремонту.</p></div>
         <div className="process-step"><span>03</span><h3>Ремонт і перевірка</h3><p>Ремонтуємо погоджений обсяг і перевіряємо роботу коробки після ремонту.</p></div>
       </div>
+      <p className="mt-10 max-w-3xl border-t border-white/10 pt-6 font-semibold leading-7 text-zinc-300">{site.warranty}</p>
     </Section>
 
     <section className="border-y border-white/[.07] bg-[#0d1010] px-5 py-16 lg:px-10">

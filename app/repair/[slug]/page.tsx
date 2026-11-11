@@ -45,6 +45,7 @@ export default async function RepairPage({ params }: { params: Promise<{ slug: s
         <Card title="Перевірка"><p>Після ремонту перевіряємо роботу коробки.</p></Card>
       </div>
       <p className="mt-8 max-w-3xl leading-7 text-zinc-400">Перед записом зателефонуйте й опишіть, як поводиться автомобіль. Якщо знаєте VIN — продиктуйте його, це пришвидшить підготовку.</p>
+      <p className="mt-4 max-w-3xl font-semibold leading-7 text-zinc-300">{site.warranty}</p>
     </Section>
     <Section eyebrow="Контакти та маршрут" title="Запис на діагностику">
       <ContactBlock />

@@ -71,6 +71,7 @@ export function ContactBlock() {
         <div className="contact-row !border-t-0 !pt-0"><dt>Телефон</dt><dd><a className="text-2xl font-black text-white hover:text-shift" href={site.phoneHref}>{site.phoneDisplay}</a></dd></div>
         <div className="contact-row"><dt>Адреса</dt><dd>{site.address}</dd></div>
         <div className="contact-row"><dt>Працюємо</dt><dd>{site.serviceArea}</dd></div>
+        <div className="contact-row"><dt>Гарантія</dt><dd>{site.warranty}</dd></div>
       </dl>
       <div className="flex flex-col gap-3">
         <a className="button-primary" href={site.phoneHref}>Зателефонувати</a>
