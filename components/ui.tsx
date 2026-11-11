@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { navigation } from "@/lib/data";
-import { directions, site, type Direction } from "@/lib/site";
+import { directions, site, type Direction, type SitePhoto } from "@/lib/site";
 
 const Arrow = () => <span aria-hidden="true" className="ml-auto text-shift transition-transform group-hover:translate-x-1">↗</span>;
 
@@ -51,6 +51,7 @@ export function DirectionAnchor({ link, className, children }: { link: Direction
 export function DirectionCard({ item }: { item: Direction }) {
   return (
     <article className="direction-card">
+      {item.photo && <Photo photo={item.photo} className="-mx-7 -mt-7 mb-7 aspect-[16/9] rounded-b-none rounded-t-2xl" />}
       <p className="direction-code">{item.code}</p>
       <h3 className="mt-4 text-2xl font-black leading-tight tracking-[-.02em] text-white">{item.title}</h3>
       <p className="mt-2 text-sm font-semibold text-zinc-400">{item.kind}</p>
@@ -61,6 +62,15 @@ export function DirectionCard({ item }: { item: Direction }) {
         {item.secondary && <DirectionAnchor className="direction-link direction-link-secondary" link={item.secondary}>{item.secondary.label}<span aria-hidden="true">↗</span></DirectionAnchor>}
       </div>
     </article>
+  );
+}
+
+export function Photo({ photo, className = "" }: { photo: SitePhoto; className?: string }) {
+  return (
+    <div className={`min-w-0 overflow-hidden rounded-2xl border border-white/[.09] bg-[#171c1b] ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+    </div>
   );
 }
 

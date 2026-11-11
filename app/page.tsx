@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ContactBlock, DirectionAnchor, DirectionCard, Section } from "@/components/ui";
+import { ContactBlock, DirectionAnchor, DirectionCard, Photo, Section } from "@/components/ui";
 import { HomeSearch } from "@/components/home-search";
-import { directions, landings, site } from "@/lib/site";
+import { directions, landings, photos, site } from "@/lib/site";
 
 export default function Home() {
   return <>
@@ -41,25 +41,32 @@ export default function Home() {
     </div>
 
     <section className="border-y border-white/[.07] bg-[#0d1010]">
-      <div className="mx-auto grid max-w-[1360px] gap-8 px-5 py-16 lg:grid-cols-[1.2fr_.8fr] lg:items-center lg:px-10 lg:py-20">
+      <div className="mx-auto grid max-w-[1360px] gap-10 px-5 py-16 lg:grid-cols-2 lg:items-center lg:px-10 lg:py-20">
         <div>
           <p className="eyebrow">Обмінний фонд ShiftTech</p>
           <h2 className="max-w-3xl text-3xl font-black leading-[1.05] tracking-[-.03em] text-white md:text-5xl">Готові відновлені АКПП 09G для Volkswagen 2.5</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">Продаж за повною ціною або дешевше з поверненням старої коробки. Установка на нашому СТО за 1 день — за наявності сумісної АКПП і за попереднім погодженням. Відправка по Україні.</p>
           <p className="mt-4 max-w-2xl leading-7 text-zinc-400">Сумісність конкретного агрегату перевіряємо за VIN і кодом коробки.</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a className="button-primary" href={landings.rebuilt09g}>Перевірити наявність і ціну ↗</a>
+            <a className="button-secondary" href={landings.aisinRepair}>Ремонт вашої 09G / 09K / 09M ↗</a>
+          </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <a className="button-primary" href={landings.rebuilt09g}>Перевірити наявність і ціну ↗</a>
-          <a className="button-secondary" href={landings.aisinRepair}>Ремонт вашої 09G / 09K / 09M ↗</a>
+        <div className="grid grid-cols-[1.5fr_1fr] items-stretch gap-4">
+          <Photo photo={photos.exchangeFund} />
+          <Photo photo={photos.workshop} />
         </div>
       </div>
     </section>
 
     <Section eyebrow="Як ми працюємо" title="Спершу причина, потім ремонт">
-      <div className="grid gap-6 md:grid-cols-3">
-        <div className="process-step"><span>01</span><h3>Ідентифікація та діагностика</h3><p>Визначаємо коробку за VIN і кодом агрегату, фіксуємо симптоми та умови, за яких вони з’являються.</p></div>
-        <div className="process-step"><span>02</span><h3>Дефектовка й погодження</h3><p>Показуємо, що знайшли. Обсяг робіт і вартість погоджуємо з вами до початку ремонту.</p></div>
-        <div className="process-step"><span>03</span><h3>Ремонт і перевірка</h3><p>Ремонтуємо погоджений обсяг і перевіряємо роботу коробки після ремонту.</p></div>
+      <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+        <Photo photo={photos.cvtBelt} className="aspect-[3/2]" />
+        <div className="grid gap-8">
+          <div className="process-step"><span>01</span><h3>Ідентифікація та діагностика</h3><p>Визначаємо коробку за VIN і кодом агрегату, фіксуємо симптоми та умови, за яких вони з’являються.</p></div>
+          <div className="process-step"><span>02</span><h3>Дефектовка й погодження</h3><p>Показуємо, що знайшли. Обсяг робіт і вартість погоджуємо з вами до початку ремонту.</p></div>
+          <div className="process-step"><span>03</span><h3>Ремонт і перевірка</h3><p>Ремонтуємо погоджений обсяг і перевіряємо роботу коробки після ремонту.</p></div>
+        </div>
       </div>
       <p className="mt-10 max-w-3xl border-t border-white/10 pt-6 font-semibold leading-7 text-zinc-300">{site.warranty}</p>
     </Section>

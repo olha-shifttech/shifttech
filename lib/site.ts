@@ -23,6 +23,17 @@ export const landings = {
 
 export type DirectionLink = { label: string; href: string; external?: boolean };
 
+// Фото взяті з опублікованих лендингів ShiftTech. Стокові зображення не використовуємо.
+export type SitePhoto = { src: string; alt: string; width: number; height: number };
+
+export const photos = {
+  stockUnit: { src: "/images/09g-stock-unit.jpg", alt: "Відновлена АКПП Aisin 09G з обмінного фонду ShiftTech", width: 942, height: 630 },
+  exchangeFund: { src: "/images/09g-exchange-fund.jpg", alt: "Три відновлені АКПП Aisin 09G / TF-60SN з обмінного фонду ShiftTech", width: 944, height: 631 },
+  workshop: { src: "/images/workshop-vw-installation.jpg", alt: "Volkswagen на підйомнику СТО ShiftTech у Білогородці під час установки АКПП", width: 470, height: 630 },
+  cvtHousing: { src: "/images/jatco-cvt-housing.jpg", alt: "Корпус варіатора CVT на робочому столі", width: 1024, height: 540 },
+  cvtBelt: { src: "/images/cvt-belt-and-cones.jpg", alt: "Ремінь і конуси варіатора під час дефектування", width: 939, height: 628 },
+} satisfies Record<string, SitePhoto>;
+
 export type Direction = {
   slug: string;
   code: string;
@@ -30,6 +41,7 @@ export type Direction = {
   kind: string;
   text: string;
   tags: string[];
+  photo?: SitePhoto;
   primary: DirectionLink;
   secondary?: DirectionLink;
 };
@@ -42,6 +54,7 @@ export const directions: Direction[] = [
     kind: "Автоматична коробка",
     text: "Діагностика, дефектовка та ремонт АКПП 09G, 09K, 09M. Окремо — готові відновлені 09G з обмінного фонду з установкою на нашому СТО.",
     tags: ["09G", "09K", "09M"],
+    photo: photos.stockUnit,
     primary: { label: "Ремонт 09G / 09K / 09M", href: landings.aisinRepair, external: true },
     secondary: { label: "Купити відновлену 09G", href: landings.rebuilt09g, external: true },
   },
@@ -52,6 +65,7 @@ export const directions: Direction[] = [
     kind: "Варіатор",
     text: "Діагностика, дефектовка та ремонт варіаторів Jatco: гідроблок, насос, ремінь і конуси, адаптація після ремонту. Модель варіатора перевіряємо за VIN.",
     tags: ["JF010E", "JF011E", "JF015E", "JF016E", "JF017E"],
+    photo: photos.cvtHousing,
     primary: { label: "Ремонт варіаторів Jatco", href: landings.jatcoCvt, external: true },
   },
   {

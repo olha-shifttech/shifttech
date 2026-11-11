@@ -25,7 +25,7 @@ a { text-underline-offset: 4px; }
 .process-step span { color:#acb78d; font-size:.75rem; font-weight:800; letter-spacing:.15em; }
 .process-step h3 { margin-top:1rem; font-size:1.25rem; font-weight:800; }
 .process-step p { margin-top:.75rem; color:#929a95; line-height:1.75; }
-.direction-card { display:flex; flex-direction:column; border:1px solid rgba(255,255,255,.09); border-radius:1rem; background:#171c1b; padding:1.75rem; transition:border-color .2s ease, transform .2s ease; }
+.direction-card { display:flex; flex-direction:column; overflow:hidden; width:100%; border:1px solid rgba(255,255,255,.09); border-radius:1rem; background:#171c1b; padding:1.75rem; transition:border-color .2s ease, transform .2s ease; }
 .direction-card:hover { border-color:rgba(172,183,141,.45); transform:translateY(-3px); }
 .direction-code { color:#acb78d; font-size:.75rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
 .direction-link { display:inline-flex; min-height:2.75rem; align-items:center; gap:.5rem; border-radius:.6rem; padding:.6rem 1rem; font-size:.875rem; font-weight:800; transition:.2s ease; }
