@@ -67,9 +67,10 @@ export function DirectionCard({ item }: { item: Direction }) {
 
 export function Photo({ photo, className = "" }: { photo: SitePhoto; className?: string }) {
   return (
-    <div className={`min-w-0 overflow-hidden rounded-2xl border border-white/[.09] bg-[#171c1b] ${className}`}>
+    <div className={`relative min-w-0 overflow-hidden rounded-2xl border border-white/[.09] bg-[#171c1b] ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+      {photo.illustration && <span className="absolute bottom-3 left-3 rounded-md border border-white/15 bg-[#111515]/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[.14em] text-zinc-300">Ілюстрація</span>}
     </div>
   );
 }

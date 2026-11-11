@@ -24,7 +24,8 @@ export const landings = {
 export type DirectionLink = { label: string; href: string; external?: boolean };
 
 // Фото взяті з опублікованих лендингів ShiftTech. Стокові зображення не використовуємо.
-export type SitePhoto = { src: string; alt: string; width: number; height: number };
+// illustration: true — схематичний малюнок, а не фото робіт ShiftTech; на сайті позначається підписом «Ілюстрація».
+export type SitePhoto = { src: string; alt: string; width: number; height: number; illustration?: boolean };
 
 export const photos = {
   stockUnit: { src: "/images/09g-stock-unit.jpg", alt: "Відновлена АКПП Aisin 09G з обмінного фонду ShiftTech", width: 942, height: 630 },
@@ -32,6 +33,9 @@ export const photos = {
   workshop: { src: "/images/workshop-vw-installation.jpg", alt: "Volkswagen на підйомнику СТО ShiftTech у Білогородці під час установки АКПП", width: 470, height: 630 },
   cvtHousing: { src: "/images/jatco-cvt-housing.jpg", alt: "Корпус варіатора CVT на робочому столі", width: 1024, height: 540 },
   cvtBelt: { src: "/images/cvt-belt-and-cones.jpg", alt: "Ремінь і конуси варіатора під час дефектування", width: 939, height: 628 },
+  dct450: { src: "/images/illustration-dct450.svg", alt: "Схематична ілюстрація: два пакети дисків мокрого зчеплення в мастилі", width: 960, height: 540, illustration: true },
+  dct250: { src: "/images/illustration-dct250.svg", alt: "Схематична ілюстрація: два диски сухого зчеплення", width: 960, height: 540, illustration: true },
+  ford6f35: { src: "/images/illustration-6f35.svg", alt: "Схематична ілюстрація: планетарний ряд автоматичної коробки", width: 960, height: 540, illustration: true },
 } satisfies Record<string, SitePhoto>;
 
 export type Direction = {
@@ -75,6 +79,7 @@ export const directions: Direction[] = [
     kind: "Преселективна коробка · мокре зчеплення",
     text: "Ремонт PowerShift DCT450 з мокрим зчепленням. Починаємо з діагностики, обсяг робіт і вартість погоджуємо до ремонту.",
     tags: ["PowerShift", "Мокре зчеплення"],
+    photo: photos.dct450,
     primary: { label: "Докладніше про DCT450", href: "/repair/powershift-dct450" },
   },
   {
@@ -84,6 +89,7 @@ export const directions: Direction[] = [
     kind: "Преселективна коробка · сухе зчеплення",
     text: "Ремонт PowerShift DCT250 із сухим зчепленням. Починаємо з діагностики, обсяг робіт і вартість погоджуємо до ремонту.",
     tags: ["PowerShift", "Сухе зчеплення"],
+    photo: photos.dct250,
     primary: { label: "Докладніше про DCT250", href: "/repair/powershift-dct250" },
   },
   {
@@ -93,6 +99,7 @@ export const directions: Direction[] = [
     kind: "Автоматична коробка",
     text: "Ремонт автоматичної коробки Ford 6F35. Починаємо з діагностики, обсяг робіт і вартість погоджуємо до ремонту.",
     tags: ["Ford", "6F35"],
+    photo: photos.ford6f35,
     primary: { label: "Докладніше про 6F35", href: "/repair/ford-6f35" },
   },
 ];

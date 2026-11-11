@@ -5,7 +5,7 @@ export const requiresVerification = "Потребує перевірки";
 
 export const navigation = [
   { href: "/services", label: "Послуги" },
-  { href: "/cars", label: "Автомобілі" },
+  { href: "/#vin", label: "Перевірка за VIN" },
   { href: "/transmissions", label: "Коробки передач" },
   { href: "/knowledge-base", label: "База знань" },
   { href: "/repair-cases", label: "Кейси ремонту" },
