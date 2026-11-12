@@ -5,7 +5,7 @@ export const requiresVerification = "Потребує перевірки";
 
 export const navigation = [
   { href: "/services", label: "Послуги" },
-  { href: "/cars", label: "Автомобілі" },
+  { href: "/#vin", label: "Перевірка за VIN" },
   { href: "/transmissions", label: "Коробки передач" },
   { href: "/knowledge-base", label: "База знань" },
   { href: "/repair-cases", label: "Кейси ремонту" },
@@ -143,10 +143,12 @@ const vehicleRecords = [
 export const vehicles = vehicleRecords.map((vehicle) => ({ ...vehicle, transmissionIds: relations.vehicleTransmissions.filter(([vehicleId]) => vehicleId === vehicle.slug).map(([, transmissionId]) => transmissionId) }));
 
 export const serviceCards = [
-  { title: "Діагностика трансмісії", href: "/diagnostics", text: "Перший крок перед висновками щодо АКПП, DSG або CVT. Без перевірки точну причину визначити не можна." },
-  { title: "Ремонт АКПП", href: "/akpp", text: "Напрямок для автоматичних коробок передач, зокрема ядра знань 09G / 09M / 09K." },
-  { title: "Ремонт CVT", href: "/cvt", text: "Напрямок для варіаторів Jatco: JF010E, JF011E, JF015E, JF016E, JF017E." },
-  { title: "Робота з DSG", href: "/dsg", text: "Окремий напрямок платформи, який розширюється після побудови основного ядра знань." },
+  { title: "Діагностика трансмісії", href: "/diagnostics", text: "Перший крок перед будь-яким висновком. Без перевірки точну причину несправності визначити не можна." },
+  { title: "АКПП Aisin 09G / TF-60SN", href: "/akpp", text: "Ремонт 09G, 09K, 09M і продаж готових відновлених 09G з обмінного фонду." },
+  { title: "Варіатори Jatco", href: "/cvt", text: "Ремонт CVT Jatco: JF010E, JF011E, JF015E, JF016E, JF017E." },
+  { title: "PowerShift DCT450", href: "/repair/powershift-dct450", text: "Преселективна коробка з мокрим зчепленням." },
+  { title: "PowerShift DCT250", href: "/repair/powershift-dct250", text: "Преселективна коробка із сухим зчепленням." },
+  { title: "АКПП Ford 6F35", href: "/repair/ford-6f35", text: "Автоматична коробка Ford 6F35." },
 ];
 
 export function vehicleName(vehicle: (typeof vehicles)[number]) {

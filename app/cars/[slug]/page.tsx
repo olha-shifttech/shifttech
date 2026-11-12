@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card, Hero, Pill, Section } from "@/components/ui";
 import { getTransmission, requiresVerification, symptoms, vehicles, vehicleName } from "@/lib/data";
 
-const baseUrl = "https://shifttech.vercel.app";
+const baseUrl = "https://shifttech.com.ua";
 export const dynamicParams = false;
 
 export function generateStaticParams() {

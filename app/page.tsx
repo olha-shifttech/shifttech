@@ -1,19 +1,92 @@
 import Link from "next/link";
-import { Card, Section } from "@/components/ui";
-import { HomeSearch } from "@/components/home-search";
-import { serviceCards, transmissions } from "@/lib/data";
+import { ContactBlock, DirectionAnchor, DirectionCard, Photo, Section } from "@/components/ui";
+import { directions, landings, photos, site } from "@/lib/site";
 
 export default function Home() {
   return <>
-    <section className="hero-grid relative overflow-hidden border-b border-white/[.07] px-5 pb-20 pt-16 lg:px-10 lg:pb-28 lg:pt-24">
-      <div className="hero-glow" /><div className="relative mx-auto grid max-w-[1360px] items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
-        <div><p className="eyebrow">Професійний сервіс трансмісій</p><h1 className="text-5xl font-black leading-[.96] tracking-[-.06em] text-white sm:text-6xl lg:text-[82px]">Ремонт коробок передач <span className="text-shift">без припущень</span></h1><p className="mt-7 max-w-xl text-lg leading-8 text-zinc-400">Діагностуємо та ремонтуємо АКПП, DSG і CVT. Допомагаємо визначити вашу трансмісію за автомобілем і обрати правильний наступний крок.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/diagnostics" className="button-primary">Записатися на діагностику</Link><Link href="/transmissions" className="button-secondary">Каталог коробок</Link></div><div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-sm font-semibold text-zinc-300"><span><b className="mr-2 text-shift">✓</b>АКПП</span><span><b className="mr-2 text-shift">✓</b>DSG</span><span><b className="mr-2 text-shift">✓</b>CVT / варіатори</span></div></div>
-        <div className="relative"><div className="absolute -inset-10 rounded-full bg-shift/10 blur-3xl" /><div className="relative rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#252b28] to-[#0d100f] p-8 shadow-[0_40px_100px_rgba(0,0,0,.55)]"><div className="mb-12 flex items-center justify-between"><span className="rounded-full border border-shift/30 bg-shift/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-shift">Точна діагностика</span><span className="text-5xl font-black text-white/10">ST</span></div><div className="mx-auto grid aspect-square max-w-[330px] place-items-center rounded-full border border-white/10 bg-[radial-gradient(circle,#28302c_0%,#121614_58%,#090b0a_59%)] shadow-[inset_0_0_80px_rgba(0,0,0,.6)]"><div className="grid h-32 w-32 place-items-center rounded-full border-[18px] border-zinc-700 text-3xl font-black italic text-shift shadow-[0_0_0_2px_#3b4540,0_0_50px_rgba(53,208,111,.15)]">S</div></div><p className="mt-10 text-sm leading-6 text-zinc-500">Спочатку визначаємо коробку та причину несправності. Лише потім пропонуємо рішення.</p></div></div>
+    <section className="hero-grid relative overflow-hidden border-b border-white/[.07] px-5 pb-20 pt-16 lg:px-10 lg:pb-24 lg:pt-24">
+      <div className="hero-glow" />
+      <div className="relative mx-auto grid max-w-[1360px] items-center gap-14 lg:grid-cols-[1.1fr_.9fr]">
+        <div>
+          <p className="eyebrow">ShiftTech · Білогородка · Київська область</p>
+          <h1 className="text-[2.6rem] font-black leading-[1] tracking-[-.04em] text-white sm:text-6xl lg:text-[72px]">Ремонт АКПП, варіаторів і <span className="text-shift">PowerShift</span></h1>
+          <p className="mt-7 max-w-xl text-lg leading-8 text-zinc-300">Діагностика, дефектовка та ремонт трансмісій для автомобілів із Києва й Київської області. Агрегати на ремонт приймаємо з усієї України.</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href={site.phoneHref} className="button-primary">Подзвонити: {site.phoneDisplay}</a>
+            <Link href="#directions" className="button-secondary">Напрями ремонту</Link>
+          </div>
+          <p className="mt-8 border-t border-white/10 pt-6 text-sm font-semibold text-zinc-300">Обсяг робіт і вартість погоджуємо до початку ремонту.</p>
+        </div>
+        <nav aria-label="Коробки, які ремонтуємо" className="rounded-2xl border border-white/10 bg-[#171c1b] p-3 shadow-[0_40px_100px_rgba(0,0,0,.45)]">
+          <p className="px-4 pb-2 pt-3 text-xs font-extrabold uppercase tracking-[.18em] text-zinc-400">Що ремонтуємо</p>
+          {directions.map((item) => (
+            <DirectionAnchor key={item.slug} link={item.primary} className="group flex items-center gap-4 rounded-xl border-t border-white/[.07] px-4 py-4 transition first-of-type:border-t-0 hover:bg-white/[.04]">
+              <span className="w-28 shrink-0 text-sm font-black text-shift sm:w-36 sm:text-base">{item.code}</span>
+              <span className="min-w-0 text-sm leading-5 text-zinc-300">{item.kind}</span>
+              <span aria-hidden="true" className="ml-auto text-shift transition-transform group-hover:translate-x-1">{item.primary.external ? "↗" : "→"}</span>
+            </DirectionAnchor>
+          ))}
+        </nav>
       </div>
     </section>
-    <section className="border-b border-white/[.07] bg-[#0c0f0e] px-5 py-16 lg:px-10"><div className="mx-auto max-w-[1100px]"><div className="mb-8 text-center"><p className="eyebrow">Знайдіть свою трансмісію</p><h2 className="text-3xl font-black tracking-[-.04em] md:text-5xl">Пошук у базі ShiftTech</h2><p className="mx-auto mt-4 max-w-2xl text-zinc-400">Шукайте за відомими вам даними — маркою, моделлю, кодом коробки або симптомом.</p></div><HomeSearch /></div></section>
-    <Section eyebrow="Наші напрями" title="Повний цикл роботи з трансмісією"><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">{serviceCards.map((card, i) => <Card key={card.title} title={card.title} href={card.href}><p className="mb-5 text-3xl font-black text-white/10">0{i + 1}</p><p>{card.text}</p></Card>)}</div></Section>
-    <section className="border-y border-white/[.07] bg-[#0c0f0e]"><Section eyebrow="Коробки передач" title="Працюємо з перевіреними напрямами"><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{transmissions.slice(0, 6).map(item => <Card key={item.id} title={item.name} href={`/transmissions/${item.id}`}><p className="font-semibold text-zinc-300">{item.alt}</p><p className="mt-2 text-sm">{item.type} · {item.manufacturer}</p></Card>)}</div><div className="mt-8"><Link className="button-secondary" href="/transmissions">Переглянути всі коробки</Link></div></Section></section>
-    <Section eyebrow="Професійний підхід" title="Зрозумілий шлях від симптому до рішення"><div className="grid gap-6 md:grid-cols-3"><div className="process-step"><span>01</span><h3>Опишіть автомобіль</h3><p>Марка, модель і відомі симптоми допоможуть визначити напрям діагностики.</p></div><div className="process-step"><span>02</span><h3>Пройдіть діагностику</h3><p>Перевірка потрібна до будь-якого висновку щодо причини та ремонту.</p></div><div className="process-step"><span>03</span><h3>Отримайте рішення</h3><p>Подальші дії визначаються лише на підставі підтверджених даних.</p></div></div><div className="mt-12 rounded-2xl border border-shift/20 bg-shift/[.06] p-7 md:flex md:items-center md:justify-between"><div><h3 className="text-2xl font-bold">Потрібна консультація?</h3><p className="mt-2 text-zinc-400">Перейдіть до контактів, щоб обрати зручний спосіб зв’язку.</p></div><Link className="button-primary mt-5 md:mt-0" href="/contacts">Зв’язатися з нами</Link></div></Section>
+
+    <div id="directions" className="scroll-mt-24">
+      <Section eyebrow="Напрями ремонту" title="Основні напрями ремонту">
+        <p className="-mt-6 mb-10 max-w-3xl text-lg leading-8 text-zinc-300">Це ключові напрями ShiftTech. Якщо вашої трансмісії немає у списку, зателефонуйте — перевіримо можливість ремонту за VIN.</p>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          {directions.map((item, index) => <div key={item.slug} className={`flex ${index < 2 ? "lg:col-span-3" : "lg:col-span-2"}`}><div className="flex w-full"><DirectionCard item={item} /></div></div>)}
+        </div>
+      </Section>
+    </div>
+
+    <section className="border-y border-white/[.07] bg-[#0d1010]">
+      <div className="mx-auto grid max-w-[1360px] gap-10 px-5 py-16 lg:grid-cols-2 lg:items-center lg:px-10 lg:py-20">
+        <div>
+          <p className="eyebrow">Обмінний фонд ShiftTech</p>
+          <h2 className="max-w-3xl text-3xl font-black leading-[1.05] tracking-[-.03em] text-white md:text-5xl">Готові відновлені АКПП 09G для Volkswagen 2.5</h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">АКПП можна придбати без обміну або дешевше — в обмін на сумісну стару коробку. Установка на нашому СТО за 1 день — за наявності сумісної АКПП і за попереднім погодженням. Відправка по Україні.</p>
+          <p className="mt-4 max-w-2xl leading-7 text-zinc-400">Сумісність конкретного агрегату перевіряємо за VIN і кодом коробки.</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a className="button-primary" href={landings.rebuilt09g}>Перевірити наявність і ціну ↗</a>
+            <a className="button-secondary" href={landings.aisinRepair}>Ремонт вашої 09G / 09K / 09M ↗</a>
+          </div>
+        </div>
+        <div className="grid grid-cols-[1.5fr_1fr] items-stretch gap-4">
+          <Photo photo={photos.exchangeFund} />
+          <Photo photo={photos.workshop} />
+        </div>
+      </div>
+    </section>
+
+    <Section eyebrow="Як ми працюємо" title="Спершу причина, потім ремонт">
+      <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+        <Photo photo={photos.cvtBelt} className="aspect-[3/2]" />
+        <div className="grid gap-8">
+          <div className="process-step"><span>01</span><h3>Ідентифікація та діагностика</h3><p>Визначаємо коробку за VIN і кодом агрегату, фіксуємо симптоми та умови, за яких вони з’являються.</p></div>
+          <div className="process-step"><span>02</span><h3>Висновок і погодження робіт</h3><p>Показуємо, що знайшли. Обсяг робіт і вартість погоджуємо з вами до початку ремонту.</p></div>
+          <div className="process-step"><span>03</span><h3>Ремонт і перевірка</h3><p>Ремонтуємо погоджений обсяг і перевіряємо роботу коробки після ремонту.</p></div>
+        </div>
+      </div>
+      <p className="mt-10 max-w-3xl border-t border-white/10 pt-6 font-semibold leading-7 text-zinc-300">{site.warranty}</p>
+    </Section>
+
+    <section id="vin" className="scroll-mt-24 border-y border-white/[.07] bg-[#0d1010] px-5 py-16 lg:px-10 lg:py-20">
+      <div className="mx-auto grid max-w-[1360px] gap-8 lg:grid-cols-[1.3fr_.7fr] lg:items-center">
+        <div>
+          <p className="eyebrow">Перевірка за VIN</p>
+          <h2 className="max-w-3xl text-3xl font-black leading-[1.05] tracking-[-.03em] text-white md:text-5xl">Не знаєте, яка коробка встановлена у вашому авто?</h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">Зателефонуйте та продиктуйте VIN — перевіримо тип трансмісії й можливість ремонту.</p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <a className="button-primary" href={site.phoneHref}>Подзвонити: {site.phoneDisplay}</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="contacts" className="scroll-mt-24">
+      <Section eyebrow="Контакти та маршрут" title="Сервіс у Білогородці. Запис за телефоном">
+        <ContactBlock />
+      </Section>
+    </div>
   </>;
 }
