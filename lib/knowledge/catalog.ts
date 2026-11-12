@@ -39,42 +39,42 @@ const transmissionSeeds = [
   ["dsg-dq250", "DSG DQ250", ["DQ250", "02E"]],
 ] as const;
 
-const families = transmissionSeeds.map(([slug, name, aliases]) => entity("transmission-families", slug, name, "Placeholder hub for identification, applications, symptoms, diagnostics, repairs, and maintenance.", [...aliases]));
-const transmissionModels = transmissionSeeds.flatMap(([familySlug, familyName, aliases]) => aliases.slice(0, familySlug === "aisin-09g-09m-09k" ? 3 : 1).map((code) => entity("transmissions", code.toLowerCase(), `${familyName.split(" ")[0]} ${code}`, "Placeholder transmission model page; technical specifications require editorial verification.", [code])));
+const families = transmissionSeeds.map(([slug, name, aliases]) => entity("transmission-families", slug, name, "Сторінка готується. Тут будуть ідентифікація, застосування, симптоми, діагностика, ремонт і обслуговування.", [...aliases]));
+const transmissionModels = transmissionSeeds.flatMap(([familySlug, familyName, aliases]) => aliases.slice(0, familySlug === "aisin-09g-09m-09k" ? 3 : 1).map((code) => entity("transmissions", code.toLowerCase(), `${familyName.split(" ")[0]} ${code}`, "Сторінка готується. Технічні дані публікуємо після перевірки.", [code])));
 
 const registeredRepairCases = repairCases.map(repairCaseGraph);
 
 export const knowledgeEntities: KnowledgeEntity[] = [
-  ...["Volkswagen", "Audi", "Škoda", "SEAT", "Nissan", "Renault", "Mitsubishi", "Toyota"].map((name) => entity("vehicle-brands", name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), name, "Placeholder brand hub for supported models and transmissions.")),
+  ...["Volkswagen", "Audi", "Škoda", "SEAT", "Nissan", "Renault", "Mitsubishi", "Toyota"].map((name) => entity("vehicle-brands", name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(), name, "Сторінка готується. Тут будуть моделі та трансмісії цієї марки.")),
   ...[
     ["volkswagen-passat", "Volkswagen Passat"], ["volkswagen-jetta", "Volkswagen Jetta"], ["audi-a3", "Audi A3"], ["skoda-octavia", "Škoda Octavia"], ["seat-leon", "SEAT Leon"],
     ["nissan-qashqai", "Nissan Qashqai"], ["nissan-x-trail", "Nissan X-Trail"], ["nissan-murano", "Nissan Murano"], ["renault-koleos", "Renault Koleos"],
     ["mitsubishi-outlander", "Mitsubishi Outlander"], ["toyota-camry", "Toyota Camry"], ["toyota-rav4", "Toyota RAV4"],
-  ].map(([slug, name]) => entity("vehicle-models", slug, name, "Placeholder model hub. Fitment depends on generation, market, engine, and transmission code.")),
+  ].map(([slug, name]) => entity("vehicle-models", slug, name, "Сторінка готується. Тип коробки залежить від покоління, ринку, двигуна та коду трансмісії.")),
   ...families,
   ...transmissionModels,
   ...[
-    ["harsh-shifting", "Harsh shifting"], ["shudder", "Shudder or vibration"], ["slipping", "Transmission slipping"], ["delayed-engagement", "Delayed engagement"], ["no-drive", "No drive"], ["warning-mode", "Warning or limp mode"],
-  ].map(([slug, name]) => entity("symptoms", slug, name, "Placeholder symptom page; this observation is not a diagnosis.")),
+    ["harsh-shifting", "Жорсткі перемикання"], ["shudder", "Ривки або вібрація"], ["slipping", "Пробуксовка"], ["delayed-engagement", "Затримка ввімкнення передачі"], ["no-drive", "Автомобіль не їде"], ["warning-mode", "Попередження або аварійний режим"],
+  ].map(([slug, name]) => entity("symptoms", slug, name, "Сторінка готується. Симптом — це спостереження, а не діагноз.")),
   ...[
-    ["fluid-condition", "Fluid condition or level"], ["hydraulic-pressure", "Hydraulic pressure deviation"], ["electrical-control", "Electrical or control fault"], ["mechanical-wear", "Mechanical wear"],
-  ].map(([slug, name]) => entity("causes", slug, name, "Placeholder possible-cause page; confirmation requires the linked diagnostic procedure.")),
+    ["fluid-condition", "Стан або рівень рідини"], ["hydraulic-pressure", "Відхилення гідравлічного тиску"], ["electrical-control", "Несправність електрики або керування"], ["mechanical-wear", "Механічний знос"],
+  ].map(([slug, name]) => entity("causes", slug, name, "Сторінка готується. Причину підтверджує лише діагностика.")),
   ...[
-    ["vehicle-transmission-identification", "Vehicle and transmission identification"], ["scan-and-freeze-frame", "Scan and freeze-frame review"], ["fluid-and-leak-inspection", "Fluid and leak inspection"], ["pressure-and-road-test", "Pressure and controlled road test"],
-  ].map(([slug, name]) => entity("diagnostic-procedures", slug, name, "Placeholder diagnostic procedure. Steps, tooling, limits, and safety data are not yet published.")),
+    ["vehicle-transmission-identification", "Ідентифікація автомобіля та трансмісії"], ["scan-and-freeze-frame", "Зчитування кодів і збережених параметрів"], ["fluid-and-leak-inspection", "Перевірка рідини та витоків"], ["pressure-and-road-test", "Перевірка тиску й контрольна поїздка"],
+  ].map(([slug, name]) => entity("diagnostic-procedures", slug, name, "Сторінка готується. Порядок перевірки ще не опубліковано.")),
   ...[
-    ["fluid-service", "Transmission fluid service"], ["valve-body-repair", "Valve body repair"], ["control-system-repair", "Control system repair"], ["transmission-overhaul", "Transmission overhaul"],
-  ].map(([slug, name]) => entity("repair-procedures", slug, name, "Placeholder repair procedure. No instructions, specifications, or parts guidance are published yet.")),
+    ["fluid-service", "Обслуговування з заміною рідини"], ["valve-body-repair", "Ремонт гідроблока"], ["control-system-repair", "Ремонт системи керування"], ["transmission-overhaul", "Капітальний ремонт трансмісії"],
+  ].map(([slug, name]) => entity("repair-procedures", slug, name, "Сторінка готується. Інструкції та технічні дані ще не опубліковано.")),
   ...[
-    ["fluid-service-interval", "Fluid service interval"], ["fluid-specification", "Fluid specification and level"], ["adaptation-after-service", "Adaptation after service"],
-  ].map(([slug, name]) => entity("maintenance", slug, name, "Placeholder maintenance topic; use vehicle-specific manufacturer information when content is reviewed.")),
+    ["fluid-service-interval", "Інтервал заміни рідини"], ["fluid-specification", "Специфікація та рівень рідини"], ["adaptation-after-service", "Адаптація після обслуговування"],
+  ].map(([slug, name]) => entity("maintenance", slug, name, "Сторінка готується. Матеріал публікуємо після перевірки за даними виробника.")),
   ...[
-    ["how-identify-transmission", "How do I identify my transmission?"], ["can-i-drive-with-symptom", "Can I keep driving with a transmission symptom?"], ["is-code-a-diagnosis", "Is a fault code a diagnosis?"],
-  ].map(([slug, name]) => entity("faq", slug, name, "Placeholder FAQ answer awaiting technical and editorial review.")),
+    ["how-identify-transmission", "Як визначити, яка в мене коробка?"], ["can-i-drive-with-symptom", "Чи можна їздити з симптомами несправності коробки?"], ["is-code-a-diagnosis", "Чи є код помилки діагнозом?"],
+  ].map(([slug, name]) => entity("faq", slug, name, "Відповідь готується й проходить технічну перевірку.")),
   ...registeredRepairCases.map(({ entity }) => entity),
   ...[
-    ["transmission-identification-guide", "Transmission identification guide"], ["symptom-versus-diagnosis", "Symptom versus diagnosis"], ["pre-diagnostic-checklist", "Pre-diagnostic checklist"],
-  ].map(([slug, name]) => entity("articles", slug, name, "Placeholder related article awaiting sourced editorial content.")),
+    ["transmission-identification-guide", "Як визначити тип трансмісії"], ["symptom-versus-diagnosis", "Симптом і діагноз: у чому різниця"], ["pre-diagnostic-checklist", "Що підготувати перед діагностикою"],
+  ].map(([slug, name]) => entity("articles", slug, name, "Стаття готується.")),
 ];
 
 const id = (kind: EntityKind, slug: string) => `${kind}:${slug}`;
@@ -99,7 +99,8 @@ export const knowledgeEdges: KnowledgeEdge[] = [
   { from: id("articles", "pre-diagnostic-checklist"), to: id("diagnostic-procedures", "scan-and-freeze-frame"), relation: "related-to" },
 ];
 
-export const kindLabels: Record<EntityKind, string> = { "vehicle-brands": "Vehicle brands", "vehicle-models": "Vehicle models", "transmission-families": "Transmission families", transmissions: "Transmission models", symptoms: "Symptoms", causes: "Possible causes", "diagnostic-procedures": "Diagnostic procedures", "repair-procedures": "Repair procedures", maintenance: "Maintenance", faq: "Frequently asked questions", "repair-cases": "ShiftTech repair cases", articles: "Related articles" };
+export const kindLabels: Record<EntityKind, string> = { "vehicle-brands": "Марки авто", "vehicle-models": "Моделі авто", "transmission-families": "Сімейства трансмісій", transmissions: "Моделі трансмісій", symptoms: "Симптоми", causes: "Можливі причини", "diagnostic-procedures": "Діагностика", "repair-procedures": "Ремонт", maintenance: "Обслуговування", faq: "Часті запитання", "repair-cases": "Кейси ремонту ShiftTech", articles: "Статті" };
+export const relationLabels: Record<KnowledgeEdge["relation"], string> = { contains: "Містить", uses: "Використовує", "applies-to": "Стосується", "may-present": "Можливий симптом", "may-indicate": "Можлива причина", "diagnosed-by": "Перевіряється", "resolved-by": "Усувається", "maintained-by": "Обслуговування", "documented-in": "Описано в кейсі", answers: "Відповідь", "related-to": "Пов’язано" };
 export const entityUrl = (item: KnowledgeEntity) => `/${item.kind}/${item.slug}`;
 export const entitiesByKind = (kind: EntityKind) => knowledgeEntities.filter((item) => item.kind === kind);
 export const relatedEntities = (entityId: string) => {

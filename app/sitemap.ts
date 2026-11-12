@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes.map((route) => ({ url: `${baseUrl}${route}`, lastModified: new Date() })),
     ...repairPages.map((item) => ({ url: `${baseUrl}/repair/${item.slug}`, lastModified: new Date() })),
-    ...knowledgeEntities.map((item) => ({ url: `${baseUrl}${entityUrl(item)}`, lastModified: new Date() })),
+    // Заглушки бази знань у sitemap не віддаємо; лишаються тільки кейси ремонту.
+    ...knowledgeEntities.filter((item) => item.kind === "repair-cases").map((item) => ({ url: `${baseUrl}${entityUrl(item)}`, lastModified: new Date() })),
   ];
 }
