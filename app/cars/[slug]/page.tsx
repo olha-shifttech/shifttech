@@ -52,7 +52,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
     </Section>
     <Section eyebrow="пов’язані симптоми" title="Сигнали, з якими варто пройти перевірку">
       <p className="max-w-3xl leading-7 text-zinc-400">Ці симптоми пов’язані в базі з указаною трансмісією, але не визначають причину несправності.</p>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{relatedSymptoms.map((symptom) => <Card key={symptom.slug} title={symptom.name} href={`/symptoms/${symptom.slug}`}><p>{symptom.summary}</p><span className="mt-4 inline-block font-bold text-shift">Що зафіксувати →</span></Card>)}</div>
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{relatedSymptoms.map((symptom) => <Card key={symptom.slug} title={symptom.name}><p>{symptom.summary}</p></Card>)}</div>
     </Section>
     <Section eyebrow="безпечна діагностика" title="Що підготувати перед зверненням">
       <div className="grid gap-5 md:grid-cols-3"><Card title="01. Умови прояву"><p>Зафіксуйте, чи трансмісія холодна або прогріта, швидкість та навантаження.</p></Card><Card title="02. Поведінка авто"><p>Запишіть передачу, затримку перемикання та індикатори на панелі.</p></Card><Card title="03. Ідентифікація"><p>Підтвердьте конкретну комплектацію автомобіля до технічного висновку.</p></Card></div>

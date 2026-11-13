@@ -3,12 +3,12 @@ export type TransmissionType = "АКПП" | "CVT" | "DSG";
 export type EntityStatus = "draft" | "ready-for-content";
 export const requiresVerification = "Потребує перевірки";
 
+// «Коробки передач», «База знань» і «Кейси ремонту» тимчасово прибрані з меню:
+// розділи ще без підтвердженого наповнення. Самі сторінки лишаються доступними за адресою.
 export const navigation = [
   { href: "/services", label: "Послуги" },
+  { href: "/#directions", label: "Напрями ремонту" },
   { href: "/#vin", label: "Перевірка за VIN" },
-  { href: "/transmissions", label: "Коробки передач" },
-  { href: "/knowledge-base", label: "База знань" },
-  { href: "/repair-cases", label: "Кейси ремонту" },
   { href: "/contacts", label: "Контакти" },
 ];
 
