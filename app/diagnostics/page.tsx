@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import { Card, ContactBlock, Hero, Section } from "@/components/ui";
 import { site } from "@/lib/site";
+import { indexableMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Діагностика трансмісії",
-  description: "Діагностика АКПП, варіатора або PowerShift у ShiftTech: визначаємо коробку за VIN, фіксуємо симптоми, погоджуємо роботи до ремонту.",
-};
+export const metadata = indexableMetadata({
+  path: "/diagnostics",
+  title: "Діагностика трансмісії: АКПП, варіатор, PowerShift",
+  description: "Діагностика АКПП, варіатора або PowerShift у ShiftTech: визначаємо коробку за VIN, фіксуємо симптоми, погоджуємо роботи й вартість до ремонту.",
+});
 
 export default function Diagnostics() {
   return <>

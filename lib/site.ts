@@ -7,6 +7,9 @@ export const site = {
   name: "ShiftTech",
   phoneDisplay: "067 591 10 05",
   phoneHref: "tel:+380675911005",
+  // Чат Viber з цим самим номером. Формат viber://chat?number= не описаний в офіційній документації Viber,
+  // але є загальновживаним. Перед публікацією кнопку треба натиснути на телефоні з Viber.
+  viberHref: "viber://chat?number=%2B380675911005",
   address: "смт Білогородка, вул. Полунична 2А, Київська область",
   addressShort: "Білогородка · Київська область",
   mapUrl: "https://maps.app.goo.gl/yevUEie2dnCZjJBJA",

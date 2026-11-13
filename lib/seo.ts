@@ -7,6 +7,10 @@ import { repairPages, site } from "@/lib/site";
 // і підтверджений власницею.
 export const indexablePaths: string[] = [
   "/",
+  "/services",
+  "/akpp",
+  "/cvt",
+  "/diagnostics",
   "/contacts",
   ...repairPages.map((item) => `/repair/${item.slug}`),
 ];

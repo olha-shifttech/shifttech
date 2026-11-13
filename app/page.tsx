@@ -88,6 +88,8 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-3">
           <a className="button-primary" href={site.phoneHref}>Подзвонити: {site.phoneDisplay}</a>
+          <a className="button-secondary" href={site.viberHref}>Надіслати VIN у Viber</a>
+          <p className="text-sm leading-6 text-zinc-400">Viber відкриється, якщо застосунок встановлено на вашому пристрої.</p>
         </div>
       </div>
     </section>
