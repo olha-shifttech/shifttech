@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, ContactBlock, Pill, Section } from "@/components/ui";
 import { getRepairPage, repairPages, site } from "@/lib/site";
+import { indexableMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -13,11 +14,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const item = getRepairPage((await params).slug);
   if (!item) return {};
-  return {
+  return indexableMetadata({
+    path: `/repair/${item.slug}`,
     title: `Ремонт ${item.title} — Білогородка, Київ та область`,
-    description: `${item.text} ${site.addressShort}. Телефон: ${site.phoneDisplay}.`,
-    alternates: { canonical: `/repair/${item.slug}` },
-  };
+    description: `Ремонт ${item.title} у ShiftTech: діагностика, погодження робіт і вартості до ремонту. Білогородка, Київська область. Телефон: ${site.phoneDisplay}.`,
+  });
 }
 
 export default async function RepairPage({ params }: { params: Promise<{ slug: string }> }) {

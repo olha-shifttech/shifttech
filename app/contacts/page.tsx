@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { ContactBlock, DirectionAnchor, Hero, Section } from "@/components/ui";
 import { directions, site } from "@/lib/site";
+import { autoRepairJsonLd, indexableMetadata, jsonLdScript } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Контакти та маршрут",
-  description: `ShiftTech: ${site.address}. Телефон: ${site.phoneDisplay}. Ремонт АКПП, варіаторів і PowerShift.`,
-  alternates: { canonical: "/contacts" },
-};
+export const metadata = indexableMetadata({
+  path: "/contacts",
+  title: "Контакти та маршрут — Білогородка, вул. Полунична 2А",
+  description: `Адреса ShiftTech: ${site.address}. Телефон для запису на діагностику: ${site.phoneDisplay}. Маршрут у Google Maps.`,
+});
 
 export default function Contacts() {
   return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(autoRepairJsonLd) }} />
     <Hero title="Контакти ShiftTech" subtitle={`${site.address}. Запис на діагностику — за телефоном ${site.phoneDisplay}.`} />
     <Section eyebrow="Зв’язок і маршрут" title="Як нас знайти">
       <ContactBlock />
