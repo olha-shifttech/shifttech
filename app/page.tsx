@@ -1,9 +1,18 @@
 import Link from "next/link";
 import { ContactBlock, DirectionAnchor, DirectionCard, Photo, Section } from "@/components/ui";
 import { directions, landings, photos, site } from "@/lib/site";
+import { autoRepairJsonLd, indexableMetadata, jsonLdScript } from "@/lib/seo";
+
+export const metadata = indexableMetadata({
+  path: "/",
+  absoluteTitle: true,
+  title: "ShiftTech — ремонт АКПП, варіаторів і PowerShift | Білогородка, Київ",
+  description: "Ремонт АКПП Aisin 09G / TF-60SN, варіаторів Jatco, PowerShift DCT450 і DCT250, Ford 6F35. Сервіс у Білогородці: Київ і Київська область. Телефон: 067 591 10 05.",
+});
 
 export default function Home() {
   return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(autoRepairJsonLd) }} />
     <section className="hero-grid relative overflow-hidden border-b border-white/[.07] px-5 pb-20 pt-16 lg:px-10 lg:pb-24 lg:pt-24">
       <div className="hero-glow" />
       <div className="relative mx-auto grid max-w-[1360px] items-center gap-14 lg:grid-cols-[1.1fr_.9fr]">
@@ -79,6 +88,8 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-3">
           <a className="button-primary" href={site.phoneHref}>Подзвонити: {site.phoneDisplay}</a>
+          <a className="button-secondary" href={site.viberHref}>Надіслати VIN у Viber</a>
+          <p className="text-sm leading-6 text-zinc-400">Viber відкриється, якщо застосунок встановлено на вашому пристрої.</p>
         </div>
       </div>
     </section>
