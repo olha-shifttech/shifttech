@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Card, ContactBlock, Pill, Section } from "@/components/ui";
 import { getRepairPage, repairPages, site } from "@/lib/site";
 import { indexableMetadata } from "@/lib/seo";
+import { Dct450Landing } from "@/components/dct450-landing";
 
 export const dynamicParams = false;
 
@@ -14,6 +15,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const item = getRepairPage((await params).slug);
   if (!item) return {};
+  if (item.slug === "powershift-dct450") {
+    return indexableMetadata({
+      path: "/repair/powershift-dct450",
+      title: "Ремонт PowerShift DCT450 / 6DCT450 / MPS6 у Києві та області",
+      description: "Діагностика та ремонт PowerShift DCT450, 6DCT450 і MPS6 у Білогородці. Мокре зчеплення, механічна частина, гідравлічний блок, адаптація. Телефон 067 591 10 05.",
+      image: { url: "/images/dct450/og-mechanical.jpg", width: 1200, height: 800, alt: "Механічна частина PowerShift DCT450 у процесі ремонту ShiftTech" },
+    });
+  }
   return indexableMetadata({
     path: `/repair/${item.slug}`,
     title: `Ремонт ${item.title} — Білогородка, Київ та область`,
@@ -24,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function RepairPage({ params }: { params: Promise<{ slug: string }> }) {
   const item = getRepairPage((await params).slug);
   if (!item) notFound();
+  if (item.slug === "powershift-dct450") return <Dct450Landing />;
   return <>
     <section className="hero-grid relative overflow-hidden border-b border-white/[.07] px-5 py-20 lg:px-10 lg:py-28">
       <div className="hero-glow" />
