@@ -15,18 +15,18 @@ export const indexablePaths: string[] = [
   ...repairPages.map((item) => `/repair/${item.slug}`),
 ];
 
-export function indexableMetadata({ path, title, description, absoluteTitle = false }: { path: string; title: string; description: string; absoluteTitle?: boolean }): Metadata {
+export function indexableMetadata({ path, title, description, absoluteTitle = false, image }: { path: string; title: string; description: string; absoluteTitle?: boolean; image?: { url: string; width: number; height: number; alt: string } }): Metadata {
   if (!indexablePaths.includes(path)) throw new Error(`Сторінки ${path} немає в indexablePaths (lib/seo.ts)`);
   const ogTitle = absoluteTitle ? title : `${title} | ${site.name}`;
   // Дочірній openGraph повністю заміняє батьківський, тому картинку вказуємо явно.
-  const images = [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "ShiftTech — ремонт АКПП, варіаторів і PowerShift. Білогородка, Київська область." }];
+  const images = [image ?? { url: "/opengraph-image.png", width: 1200, height: 630, alt: "ShiftTech — ремонт АКПП, варіаторів і PowerShift. Білогородка, Київська область." }];
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: path },
     robots: { index: true, follow: true },
     openGraph: { title: ogTitle, description, url: path, type: "website", locale: "uk_UA", siteName: site.name, images },
-    twitter: { card: "summary_large_image", title: ogTitle, description, images: ["/opengraph-image.png"] },
+    twitter: { card: "summary_large_image", title: ogTitle, description, images: [images[0].url] },
   };
 }
 
