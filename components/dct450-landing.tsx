@@ -42,7 +42,7 @@ const steps = [
   ["Адаптація і перевірка", "Проводимо адаптацію, тест-драйв і повторну діагностику."],
 ];
 
-const addressOnPage = "с. Білогородка, вул. Полунична 2А, Київська область";
+const addressOnPage = "с. Білогородка, вул. Полунична, 2А, Київська область";
 
 // Фото власниці, 1280×853 (3:2). Рамка має ту саму пропорцію, тому кадр ніде не обрізається.
 function LandingPhoto({ name, alt, priority = false, sizes }: { name: string; alt: string; priority?: boolean; sizes: string }) {
