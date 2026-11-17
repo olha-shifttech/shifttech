@@ -4,7 +4,7 @@ import { autoRepairJsonLd, indexableMetadata, jsonLdScript } from "@/lib/seo";
 
 export const metadata = indexableMetadata({
   path: "/contacts",
-  title: "Контакти та маршрут — Білогородка, вул. Полунична 2А",
+  title: "Контакти та маршрут — Білогородка, вул. Полунична, 2А",
   description: `Адреса ShiftTech: ${site.address}. Телефон для запису на діагностику: ${site.phoneDisplay}. Маршрут у Google Maps.`,
 });
 

@@ -42,8 +42,6 @@ const steps = [
   ["Адаптація і перевірка", "Проводимо адаптацію, тест-драйв і повторну діагностику."],
 ];
 
-const addressOnPage = "с. Білогородка, вул. Полунична, 2А, Київська область";
-
 // Фото власниці, 1280×853 (3:2). Рамка має ту саму пропорцію, тому кадр ніде не обрізається.
 function LandingPhoto({ name, alt, priority = false, sizes }: { name: string; alt: string; priority?: boolean; sizes: string }) {
   const base = `/images/dct450/${name}`;
@@ -170,7 +168,7 @@ export function Dct450Landing() {
         <dl className="rounded-2xl border border-white/[.09] bg-[#171c1b] p-7 md:p-9">
           <div className="contact-row !border-t-0 !pt-0"><dt>Телефон</dt><dd><a className="text-2xl font-black text-white hover:text-shift" href={site.phoneHref}>{site.phoneDisplay}</a></dd></div>
           <div className="contact-row"><dt>Viber</dt><dd>На цьому ж номері</dd></div>
-          <div className="contact-row"><dt>Адреса</dt><dd>{addressOnPage}</dd></div>
+          <div className="contact-row"><dt>Адреса</dt><dd>{site.address}</dd></div>
         </dl>
       </div>
       <p className="mx-auto mt-12 max-w-[1360px]"><Link className="font-bold text-shift" href="/#directions">← Усі напрями ремонту</Link></p>
